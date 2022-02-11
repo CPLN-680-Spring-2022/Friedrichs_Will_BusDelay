@@ -100,7 +100,7 @@ for i in range(0, 60):
                     if int(tripRow[4][-1]) == 999 | int(tripRow[5][-1]) == 999:
                         tripRow[7].clear()
                         tripRow[7].append(1)
-                # Otherwise, just upddate the timestamp
+                # Otherwise, just update the timestamp
                 else:
                     tripRow[6].pop()
                     tripRow[6].append(tripText.split("\"timestamp\":")[1].split('}')[0])

@@ -36,7 +36,8 @@ library(sf)
 points = st_read('https://raw.githubusercontent.com/CPLN-680-Spring-2022/Friedrichs_Will_BusDelay/main/raw_data/map_data/stops_by_route/routestops.dbf') 
 points = st_as_sf(points,  coords = c("Lon", "Lat"))
 
-routes = st_read('https://raw.githubusercontent.com/CPLN-680-Spring-2022/Friedrichs_Will_BusDelay/main/raw_data/map_data/polyline_routes/routes.dbf') 
+
+routes = st_read('https://raw.githubusercontent.com/CPLN-680-Spring-2022/Friedrichs_Will_BusDelay/main/raw_data/map_data/polyline_routes/busroutes.dbf') 
 routes = st_as_sf(routes,  coords = c("Lon", "Lat"))
 
 # The leaflet function creates the zoomable image. 

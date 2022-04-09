@@ -11,6 +11,8 @@ library(shinydashboard)
 # an open source JavaScript library used to build web mapping applications
 library(leaflet)
 
+library(sf)
+
 ###########################################################################
 # Using the early bus data and the cancelled bus data, map bus performance.
 ###########################################################################
@@ -21,7 +23,7 @@ library(leaflet)
 # from the CSVs, create point data for each bus route (bigger, clickable)
 
 
-#################################################8##########################
+###########################################################################
 # Load maps to the dashboard.
 ###########################################################################
 
@@ -31,22 +33,22 @@ library(leaflet)
 #   loading from github enables the running of this script without necessatating
 #   the downloading of anything.
 
-https://raw.githubusercontent.com/CPLN-680-Spring-2022/Friedrichs_Will_BusDelay/main/raw_data/map_data/stops_by_route/04efe566-df96-4c1a-8824-3f92a45d0d72202047-1-11av6im.3lj8.dbf
-https://github.com/CPLN-680-Spring-2022/Friedrichs_Will_BusDelay/main/raw_data/map_data/stops_by_route/04efe566-df96-4c1a-8824-3f92a45d0d72202047-1-11av6im.3lj8.shp') 
+points = st_read('https://raw.githubusercontent.com/CPLN-680-Spring-2022/Friedrichs_Will_BusDelay/main/raw_data/map_data/stops_by_route/routestops.dbf') 
+points = st_as_sf(points,  coords = c("Lon", "Lat"))
 
-library(RCurl)
-movies <- read.csv("https://raw.githubusercontent.com/fivethirtyeight/data/master/fandango/fandango_score_comparison.csv", header=TRUE)
-
-
-points = sf::st_read('https://raw.githubusercontent.com/CPLN-680-Spring-2022/Friedrichs_Will_BusDelay/main/raw_data/map_data/stops_by_route/04efe566-df96-4c1a-8824-3f92a45d0d72202047-1-11av6im.3lj8.dbf') 
+routes = st_read('https://raw.githubusercontent.com/CPLN-680-Spring-2022/Friedrichs_Will_BusDelay/main/raw_data/map_data/polyline_routes/routes.dbf') 
+routes = st_as_sf(routes,  coords = c("Lon", "Lat"))
 
 # The leaflet function creates the zoomable image. 
 leaflet(options = leafletOptions(zoomControl = FALSE)) %>%
   # This adds the pre-package basemap (Positron = day, DarkMatter = night)
   addProviderTiles(providers$CartoDB.DarkMatter) %>% 
   # Set the view to the coordinates of Philadelphia
-  setView(lng = -75.1635, lat = 39.9528, zoom = 9)
+  setView(lng = -75.1635, lat = 39.9528, zoom = 10) %>%
   # addCircleMarkers displays the point data. 
+  addCircleMarkers(data = points, fillColor = 'gray', fillOpacity = 0.1, stroke = FALSE,
+                   radius = 1.3)
+
 
 
 

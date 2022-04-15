@@ -22,7 +22,7 @@ numpoints = st_as_sf(numpoints,  coords = c("Lon", "Lat"))
 
 numpoints$StopId<-as.character(numpoints$StopId)
 
-early_04_11 = read.csv("early_04_10r.csv")
+early_04_11 = read.csv("https://raw.githubusercontent.com/CPLN-680-Spring-2022/Friedrichs_Will_BusDelay/main/raw_data/map_data/early_04_10r.csv")
 colnames(early_04_11) = c("tripID", "route", "x1","StopId","x2","timestamp","x3")
 early_04_11 = early_04_11 %>% na.omit() %>% select(c("tripID", "route", "StopId", "timestamp"))
 early_04_11 = early_04_11[!early_04_11$StopId == "null", ] 
@@ -31,7 +31,7 @@ early_04_11join = merge(numpoints, early_04_11, "StopId")
 
 
 
-cancel_04_11 = read.csv("cancel_04_10r.csv")
+cancel_04_11 = read.csv("https://raw.githubusercontent.com/CPLN-680-Spring-2022/Friedrichs_Will_BusDelay/main/raw_data/map_data/cancel_04_10r.csv")
 colnames(cancel_04_11) = c("tripID", "route", "x1","StopId","x2","timestamp","x3")
 cancel_04_11 = cancel_04_11 %>% na.omit() %>% select(c("tripID", "route", "StopId", "timestamp"))
 cancel_04_11 = cancel_04_11[!cancel_04_11$StopId == "null", ] 

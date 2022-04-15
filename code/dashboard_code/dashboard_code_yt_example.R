@@ -2,8 +2,21 @@
 # https://www.youtube.com/watch?v=41jmGq7ALMY&ab_channel=Appsilon
 
 # libraries necessary
+
+# an R package that makes it easy to build interactive web apps straight from R
 library(shiny)
+# a library that makes it easy to use Shiny to create dashboards
 library(shinydashboard)
+# an open source JavaScript library used to build web mapping applications
+library(leaflet)
+
+library(sf)
+
+library(shinythemes)
+
+library(readr)
+
+library(rsconnect)
 
 # Taking advantage of shiny dashboard components, we can: 
 #   - create a dashboard page, fill it with content (header, sidebar, body)
@@ -35,4 +48,4 @@ server <- function(input, output){
 }
   
 # create a call to the server and UI
-shinyApp(ui, server)
+shinyApp(list(ui, server))

@@ -499,3 +499,8 @@ rownames(day_sums) <- datenames
 
 write.csv(day_sums, "day_sums.csv")
 write.csv(route_sums, "route_sums.csv")
+write.csv(route_data_4_11, "route_data_4_11.csv")
+write.csv(route_data_4_12, "route_data_4_12.csv")
+write.csv(route_data_4_17, "route_data_4_17.csv")
+write.csv(route_data_4_18, "route_data_4_18.csv")
+write.csv(route_data_4_19, "route_data_4_19.csv")
